@@ -1,0 +1,78 @@
+{
+  "Adres": "Адрес",
+  "recordInfo": {
+    "date": "Дата",
+    "description": "Описание",
+    "type": "Тип"
+  },
+  "scenes": {
+    "ConfirmVisit": {
+      "sendRequest": "Отправить заявку"
+    },
+    "ConfirmationCode": {
+      "changeEmail": "Другой e-mail",
+      "title": {
+        "email": "Введите код подверждения отправленный на e-mail"
+      }
+    },
+    "EditProfile": {
+      "deleteAccount": {
+        "button": "Удалить профиль",
+        "confirmationModal": {
+          "message": "Действие отменить нельзя. Подтверждаете?",
+          "title": "Удаление профиля"
+        }
+      },
+      "gender": {
+        "F": "Женский",
+        "M": "Мужской"
+      },
+      "routeName": "Редактирование профиля"
+    },
+    "Home": {
+      "title": {
+        "signIn": {
+          "part1": "Для -- получения доступа ко всем услугамвам необходимо",
+          "part2": "войти",
+          "part3": "войти="
+        }
+      },
+      "visits": {
+        "title": "Записи"
+      }
+    },
+    "Profile": {
+      "card": "Карта",
+      "editProfile": "редактировать профиль",
+      "title": "Профиль"
+    },
+    "SignInWithEmail": {
+      "headTitle": "Уже являетесь нашим пациентом?",
+      "sendRequestWithoutAuth": "Оставить заявку без регистрации",
+      "signup": {
+        "part1": "Если вы обращаетесь к нам первый раз,\nвам необходимо",
+        "part2": "зарегистрироваться."
+      }
+    },
+    "SignUpWithEmailStep1Fio": {
+      "title": "Для продолжения укажите ваши данные"
+    },
+    "SignUpWithEmailStep2Phone": {
+      "phone": "Ваш номер телефона",
+      "title": "Укажите контактый телефон"
+    },
+    "SignUpWithEmailStep3Email": {
+      "change": "Сменить",
+      "email": "Ваш email",
+      "title": "Укажите e-mail"
+    },
+    "SignUpWithEmailStep4Password": {
+      "password": "Пароль",
+      "passwordConfirmation": "Пароль",
+      "title": "Установите пароль"
+    },
+    "ddd": {
+      "df": "fff"
+    }
+  }
+}

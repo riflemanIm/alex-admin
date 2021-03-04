@@ -1,0 +1,64 @@
+{
+  "name": "api-nodejs-knex-mysql",
+  "version": "1.0.0",
+  "description": "REST API code for quick setup for CRUD applications using express/knex/mysql",
+  "main": "index.js",
+  "engines": {
+    "node": "14.x"
+  },
+  "scripts": {
+    "babel-node": "babel-node",
+    "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline && cp ./dist/sync.js ../sync",
+    "prepublishOnly": "npm run build",
+    "test": "DB_ENV=testing jest --watch --verbose",
+    "server": "cross-env PORT=8080 NODE_ENV=production nodemon ./dist/index.js",
+    "start": "nodemon --exec babel-node src/index.js"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/riflemanIm/api-node.js-knex-mysql.git"
+  },
+  "keywords": [],
+  "author": "Oleg Lambin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/riflemanIm/api-node.js-knex-mysql/issues"
+  },
+  "homepage": "https://github.com/riflemanIm/api-node.js-knex-mysql#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "cors": "^2.8.5",
+    "csv-string": "^4.0.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.21.8",
+    "lodash.merge": "^4.6.2",
+    "md5": "^2.2.1",
+    "morgan": "^1.9.1",
+    "multer": "^1.4.2",
+    "mysql": "^2.18.1",
+    "passport": "^0.4.1",
+    "passport-google-oauth2": "^0.2.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "passport-microsoft": "^0.1.0",
+    "request-promise": "^4.2.6",
+    "windows-1251": "^1.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.3",
+    "@babel/core": "^7.10.3",
+    "@babel/node": "^7.10.3",
+    "@babel/polyfill": "^7.10.1",
+    "@babel/preset-env": "^7.10.3",
+    "@now/node": "^1.7.1",
+    "cross-env": "^6.0.3",
+    "jest": "^24.9.0",
+    "nodemon": "^2.0.4",
+    "supertest": "^4.0.2"
+  }
+}

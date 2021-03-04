@@ -1,0 +1,68 @@
+{
+  "name": "mobimed-admin",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@date-io/date-fns": "^1.3.13",
+    "@material-ui/core": "^4.9.2",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.42",
+    "@material-ui/pickers": "^3.2.10",
+    "@material-ui/styles": "^4.9.0",
+    "@mdi/js": "^5.3.45",
+    "@mdi/react": "^1.4.0",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@types/marked": "^0.7.4",
+    "apexcharts": "^3.19.3",
+    "axios": "^0.19.2",
+    "classnames": "^2.2.6",
+    "date-fns": "^2.9.0",
+    "font-awesome": "^4.7.0",
+    "i18next": "^19.4.2",
+    "i18next-browser-languagedetector": "^4.1.1",
+    "jsonwebtoken": "^8.5.1",
+    "marked": "^0.8.2",
+    "md5": "^2.2.1",
+    "moment": "moment/moment",
+    "mui-datatables": "^3.1.3",
+    "ng-fullcalendar": "^2.0.3",
+    "node-sass": "^4.14.1",
+    "react": "^16.13.1",
+    "react-apexcharts": "^1.3.7",
+    "react-dom": "^16.13.1",
+    "react-i18next": "^11.5.0",
+    "react-infinite-scroller": "^1.2.4",
+    "react-paginate": "^6.3.2",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.1",
+    "react-swipeable-views": "^0.13.9",
+    "react-syntax-highlighter": "^12.2.1",
+    "react-toastify": "^6.0.6",
+    "recharts": "^1.8.5",
+    "tinycolor2": "^1.4.1",
+    "typescript": "^3.9.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
