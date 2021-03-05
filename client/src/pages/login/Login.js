@@ -95,7 +95,7 @@ function Login(props) {
     <Grid container className={classes.container}>
       <div className={classes.logotypeContainer}>
         <img src={logo} alt="logo" className={classes.logotypeImage} />
-        <Typography className={classes.logotypeText}>Mobimed Admin</Typography>
+        <Typography className={classes.logotypeText}>Alex Admin</Typography>
       </div>
       <div
         className={
@@ -414,7 +414,7 @@ function Login(props) {
           )}
         </div>
         <Typography color="primary" className={classes.copyright}>
-          © 2014-2020 Mobimed, LLC. All rights reserved.
+          © 2021 Alex, LLC. All rights reserved.
         </Typography>
       </div>
     </Grid>

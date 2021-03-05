@@ -81,7 +81,7 @@ const Start = () => {
               </ListItem>
             </List>
             <Typography variant={"body2"}>
-              For more instruction please refer to Mobimed Admin Full readme.md.
+              For more instruction please refer to Alex Admin Full readme.md.
             </Typography>
           </Widget>
         </Grid>

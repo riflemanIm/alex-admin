@@ -26,10 +26,10 @@ const Overview = () => {
         <Grid item xs={12}>
           <Widget disableWidgetMenu>
             <Typography variant={"h6"}>
-              Mobimed Admin Full is an admin dashboard template built with React
+              Alex Admin Full is an admin dashboard template built with React
               16.8.6. Sing App goes beyond usual admin templates and provides
-              you entire intuitive programming framework. You can use Mobimed
-              Admin Full to build any type of web applications like SAAS, CMS,
+              you entire intuitive programming framework. You can use Alex Admin
+              Full to build any type of web applications like SAAS, CMS,
               financial dashboards, project management tools, etc.
             </Typography>
             <Box pt={6}>

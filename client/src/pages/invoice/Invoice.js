@@ -70,7 +70,7 @@ const Invoice = () => {
             <Box display="flex" justifyContent="space-between" mb={3}>
               <img
                 src={logo}
-                alt="Mobimed"
+                alt="Alex"
                 style={{ maxHeight: 100, borderRadius: 10, marginRight: 24 }}
               />
               <Box>
@@ -88,7 +88,7 @@ const Invoice = () => {
                 <Typography variant="h4" style={{ marginBottom: 16 }}>
                   Company Information
                 </Typography>
-                <Typography variant="h6">Mobimed LLC</Typography>
+                <Typography variant="h6">Alex LLC</Typography>
                 <Typography weight="bold">2 Infinite Loop</Typography>
                 <Typography>Minsk, Belarus 220004</Typography>
                 <Typography>088.253.5345</Typography>

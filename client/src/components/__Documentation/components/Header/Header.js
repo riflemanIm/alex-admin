@@ -84,7 +84,7 @@ const Header = (props) => {
           )}
         </IconButton>
         <Typography variant="h6" block className={classes.logo}>
-          Mobimed Admin Full{" "}
+          Alex Admin Full{" "}
           <Typography variant={"h5"}>&nbsp; Documentation</Typography>
         </Typography>
         <Box

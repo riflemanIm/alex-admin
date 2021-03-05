@@ -108,7 +108,7 @@ class Calendar extends React.Component {
               " applications that run across distributed devices.",
           },
           {
-            title: "Click for Mobimed",
+            title: "Click for Alex",
             start: new Date(y, m, 28),
             end: new Date(y, m, 29),
             url: "http://mobimed.ru/",

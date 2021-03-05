@@ -309,7 +309,7 @@ function EcommercePage({ history }) {
     const componentProps = {
       type: "feedback",
       message:
-        "This page is only available in Mobimed Admin Full with Node.js integration!",
+        "This page is only available in Alex Admin Full with Node.js integration!",
       variant: "contained",
       color: "success",
     };

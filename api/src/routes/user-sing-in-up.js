@@ -40,19 +40,29 @@ router.post("/signin/local", async (req, res) => {
   console.log("\n---- sign in ---- \n", req.body);
 
   try {
-    const user = await findByEmail(req.body.email);
-    console.log(
-      "\n---- user ---- \n",
-      user,
-      "\n req.body.password \n",
-      req.body.password
-    );
+    //const user = await findByEmail(req.body.email);
+    // console.log(
+    //   "\n---- user ---- \n",
+    //   user,
+    //   "\n req.body.password \n",
+    //   req.body.password
+    // );
+    const user = {
+      id: "777",
+      password: "ljnr8499c0",
+      login: "alex",
+    };
+
     if (!user) {
       res
         .status(404)
         .json({ err: "The user with the specified email does not exist" });
     } else {
-      if (md5Compare(req.body.password, user.pass)) {
+      //if (md5Compare(req.body.password, user.pass)) {
+      if (
+        req.body.email === user.login &&
+        req.body.password === user.password
+      ) {
         const body = {
           id: user.id,
           email: user.email,

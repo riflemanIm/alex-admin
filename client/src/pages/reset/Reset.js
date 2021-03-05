@@ -124,7 +124,7 @@ function Reset(props) {
           </div>
         </div>
         <Typography color="primary" className={classes.copyright}>
-          © 2014-2020 Mobimed, LLC. All rights reserved.
+          © 2014-2020 Alex, LLC. All rights reserved.
         </Typography>
       </div>
     </Grid>
