@@ -19,7 +19,7 @@ import Notifications from "../../pages/notifications";
 
 import AlexList from "../../pages/alex";
 import AlexAdd from "../../pages/alex/AddAlex";
-import AlexEdit from "../../pages/alex/EditAlex";
+import AlexChangeDate from "../../pages/alex/AlexChangeDate";
 
 import BreadCrumbs from "../../components/BreadCrumbs";
 
@@ -78,9 +78,9 @@ function Layout(props) {
               <AlexAdd />
             </AlexProvider>
           </Route>
-          <Route path="/app/alex/:id/edit">
+          <Route path="/app/alex/:id/change-expiry-date">
             <AlexProvider>
-              <AlexEdit />
+              <AlexChangeDate />
             </AlexProvider>
           </Route>
         </Switch>

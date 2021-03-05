@@ -20,6 +20,6 @@ export default {
   isBackend: true,
   auth: {
     email: "alex",
-    password: "ljnr8499c0",
+    password: "ljnr!R8499c0",
   },
 };

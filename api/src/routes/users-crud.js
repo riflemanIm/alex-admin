@@ -1,6 +1,6 @@
 import express from "express";
 import db from "../models/user-model.js";
-import { use } from "passport";
+//import { use } from "passport";
 import multer from "multer";
 const upload = multer();
 const router = express.Router();

@@ -25,7 +25,7 @@ const AddAlex = () => {
   console.log("returnToClinic", returnToClinic);
 
   const urlBackClinic = !isNaN(returnToClinic)
-    ? `/app/clinic/${returnToClinic}/edit`
+    ? `/app/clinic/${returnToClinic}/change-expiry-date`
     : returnToClinic != null
     ? "/app/clinic/add"
     : "/app/alex/list";

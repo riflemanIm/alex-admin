@@ -13,13 +13,15 @@ router.get("/", async (req, res) => {
     //    const filter = req.params.filter;
     const filter = "/home";
     const commmand =
-      filter !== "" ? `cat /etc/passwd | grep ${filter}` : "cat /etc/passwd";
+      filter !== ""
+        ? `sudo cat /etc/passwd | grep ${filter}`
+        : "sudo cat /etc/passwd";
     const { stdout, stderr } = await exec(commmand);
 
     if (stdout !== "") {
       const users = stdout.split("\n");
       const json = [];
-      console.log("\n users", users);
+      // console.log("\n users", users);
       for (const item of users) {
         const user = item.split(":");
         const username = user[0];
@@ -29,6 +31,7 @@ router.get("/", async (req, res) => {
           const resExecDir = await exec(
             `sudo du -c ${homedir} -h --max-depth=1`
           );
+          //          const resExecDir = { stdout: "empty", stderr: "" };
 
           const resExecPass = await exec(`sudo chage -l ${username}`);
 
@@ -41,8 +44,12 @@ router.get("/", async (req, res) => {
               t[t.length - 1] !== "" ? t[t.length - 1] : t[t.length - 2];
 
             const passData = resExecPass.stdout.split("\n");
-            const lastChangeDate = Date.parse(passData[0].split(":")[1].trim());
-            const expireDate = Date.parse(passData[3].split(":")[1].trim());
+            const lastChangeDate = new Date(
+              Date.parse(passData[0].split(":")[1].trim())
+            );
+            const expiryDate = new Date(
+              Date.parse(passData[3].split(":")[1].trim())
+            );
 
             //
 
@@ -52,20 +59,20 @@ router.get("/", async (req, res) => {
               folders,
               total,
               lastChangeDate,
-              expireDate,
+              expiryDate,
             });
           }
           if (resExecDir.stderr !== "") {
-            res.status(500).json({ stderr: resExecDir.stderr });
+            res.status(500).json({ err: resExecDir.stderr });
           }
         }
       }
 
-      console.log("users:", json);
+      //console.log("users:", json);
       res.status(200).json(json);
     }
     if (stderr !== "") {
-      res.status(500).json({ stderr });
+      res.status(500).json({ err: stderr });
     }
   } catch (err) {
     res.status(500).json({ err });
@@ -84,45 +91,63 @@ router.get("/", async (req, res) => {
 });
 
 // GET  BY ID
-router.get("/:id", async (req, res) => {
-  const serviceId = req.params.id;
-  try {
-    const service = await db.findById(serviceId);
-    if (!service) {
-      res
-        .status(404)
-        .json({ err: "The service with the specified id does not exist" });
-    } else {
-      res.status(200).json(service[0]);
-    }
-  } catch (err) {
-    res.status({ err: "The service information could not be retrieved" });
-  }
-});
+// router.get("/:id", async (req, res) => {
+//   const serviceId = req.params.id;
+//   try {
+//     const service = await db.findById(serviceId);
+//     if (!service) {
+//       res
+//         .status(404)
+//         .json({ err: "The service with the specified id does not exist" });
+//     } else {
+//       res.status(200).json(service[0]);
+//     }
+//   } catch (err) {
+//     res.status({ err: "The service information could not be retrieved" });
+//   }
+// });
 
 // INSERT  INTO DB
-router.post("/", async (req, res) => {
-  const newService = req.body.data;
+// router.post("/", async (req, res) => {
+//   const newService = req.body.data;
 
-  try {
-    await db.addRow(newService);
-    res.status(201).json("ok");
-  } catch (err) {
-    console.log("err", err);
-    res
-      .status(500)
-      .json({ err: "Error in adding service", message: err.message });
-  }
-});
+//   try {
+//     await db.addRow(newService);
+//     res.status(201).json("ok");
+//   } catch (err) {
+//     console.log("err", err);
+//     res
+//       .status(500)
+//       .json({ err: "Error in adding service", message: err.message });
+//   }
+// });
 
 router.put("/:id", async (req, res) => {
-  const serviceId = req.params.id;
-  const newChanges = req.body.data;
+  const username = req.params.id;
+  const expiryDate = req.body.expiryDate;
 
   try {
-    const addChanges = await db.updateRow(serviceId, newChanges);
-    console.log("\n addChanges\n", serviceId, addChanges);
-    res.status(200).json(addChanges);
+    if (expiryDate !== "" && username !== "") {
+      const command = `sudo chage -E ${expiryDate} ${username}`;
+      console.log("\n ----------- command ------------ \n", command);
+
+      const resChage = await exec(command);
+      console.log("\n ----------- resChage ----------- \n", resChage);
+
+      //if (resChage.stdout !== "") {
+      res.status(200).json({ res: "ok" });
+      //}
+      if (resChage.stderr !== "") {
+        console.log(
+          "\n -----------resChage.stderr ------------ \n",
+          resChage.stderr
+        );
+
+        res.status(500).json({ err: resChage.stderr });
+      }
+    } else {
+      res.status(500).json({ err: "Error iusername or expiryDate" });
+    }
   } catch (err) {
     res
       .status(500)

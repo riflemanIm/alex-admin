@@ -3,15 +3,15 @@ import {
   Grid,
   Box,
   InputAdornment,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
+  // Dialog,
+  // DialogActions,
+  // DialogContent,
+  // DialogContentText,
+  // DialogTitle,
   TextField as Input,
 } from "@material-ui/core";
 import Widget from "../../components/Widget/Widget";
-import { Button } from "../../components/Wrappers/Wrappers";
+//import { Button } from "../../components/Wrappers/Wrappers";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -23,9 +23,8 @@ import TableSortLabel from "@material-ui/core/TableSortLabel";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 import IconButton from "@material-ui/core/IconButton";
-import DeleteIcon from "@material-ui/icons/DeleteOutlined";
-import Notification from "../../components/Notification/Notification";
-import { toast } from "react-toastify";
+// import Notification from "../../components/Notification/Notification";
+// import { toast } from "react-toastify";
 
 import { Typography, Link } from "../../components/Wrappers/Wrappers";
 import { useAlexDispatch, useAlexState } from "../../context/AlexContext";
@@ -38,9 +37,9 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import useStyles from "./styles";
 // Icons
 import {
-  Add as AddIcon,
+  //  Add as AddIcon,
   Search as SearchIcon,
-  CreateOutlined as CreateIcon,
+  CalendarTodayOutlined as CalendarIcon,
 } from "@material-ui/icons";
 
 import { actions } from "../../context/AlexContext";
@@ -99,10 +98,10 @@ const headCells = [
     label: "lastChangeDate",
   },
   {
-    id: "expireDate",
+    id: "expiryDate",
     alignRight: false,
     disablePadding: false,
-    label: "expireDate",
+    label: "expiryDate",
   },
 ];
 
@@ -152,18 +151,18 @@ const UserList = () => {
 
   const alexDispatch = useAlexDispatch();
   const alexValue = useAlexState();
-  const openModal = (cell) => {
-    actions.doOpenConfirm(cell)(alexDispatch);
-  };
+  // const openModal = (cell) => {
+  //   actions.doOpenConfirm(cell)(alexDispatch);
+  // };
 
-  const closeModal = () => {
-    actions.doCloseConfirm()(alexDispatch);
-  };
+  // const closeModal = () => {
+  //   actions.doCloseConfirm()(alexDispatch);
+  // };
 
-  const handleDelete = () => {
-    actions.doDelete(alexValue.idToDelete)(alexDispatch);
-    sendNotification("Запись удалена");
-  };
+  // const handleDelete = () => {
+  //   actions.doDelete(alexValue.idToDelete)(alexDispatch);
+  //   sendNotification("Запись удалена");
+  // };
 
   React.useEffect(() => {
     async function fetchAPI() {
@@ -180,28 +179,28 @@ const UserList = () => {
 
   const classes = useStyles();
 
-  function sendNotification(text) {
-    const componentProps = {
-      type: "feedback",
-      message: text,
-      variant: "contained",
-      color: "success",
-    };
-    const options = {
-      type: "info",
-      position: toast.POSITION.TOP_RIGHT,
-      progressClassName: classes.progress,
-      className: classes.notification,
-      timeOut: 1000,
-    };
-    return toast(
-      <Notification
-        {...componentProps}
-        className={classes.notificationComponent}
-      />,
-      options
-    );
-  }
+  // function sendNotification(text) {
+  //   const componentProps = {
+  //     type: "feedback",
+  //     message: text,
+  //     variant: "contained",
+  //     color: "success",
+  //   };
+  //   const options = {
+  //     type: "info",
+  //     position: toast.POSITION.TOP_RIGHT,
+  //     progressClassName: classes.progress,
+  //     className: classes.notification,
+  //     timeOut: 1000,
+  //   };
+  //   return toast(
+  //     <Notification
+  //       {...componentProps}
+  //       className={classes.notificationComponent}
+  //     />,
+  //     options
+  //   );
+  // }
 
   React.useEffect(() => {
     setAlexsRows(alexValue.rows);
@@ -277,7 +276,7 @@ const UserList = () => {
     <Loading />
   ) : (
     <Grid container spacing={3}>
-      <Dialog
+      {/* <Dialog
         open={alexValue.modalOpen}
         onClose={closeModal}
         scroll={"body"}
@@ -299,11 +298,11 @@ const UserList = () => {
             Применить
           </Button>
         </DialogActions>
-      </Dialog>
+      </Dialog>*/}
       <Grid item xs={12}>
         <Widget inheritHeight>
           <Grid container spacing={2}>
-            <Grid item md={6} xs={12}>
+            {/* <Grid item md={6} xs={12}>
               <Link href="#/app/alex/add" underline="none" color="#fff">
                 <Button variant={"contained"} color={"success"}>
                   <Box mr={1} display={"flex"}>
@@ -312,11 +311,11 @@ const UserList = () => {
                   Добавить
                 </Button>
               </Link>
-            </Grid>
+            </Grid> */}
             <Grid item md={6} xs={12}>
               <Input
                 id="search-field"
-                label="Поиск по названию"
+                label="Поиск по username"
                 margin="dense"
                 fullWidth
                 variant="outlined"
@@ -373,21 +372,24 @@ const UserList = () => {
                               marginLeft: -12,
                             }}
                           >
-                            <IconButton color={"primary"}>
+                            <IconButton
+                              color={"primary"}
+                              title="change-expiry-date"
+                            >
                               <Link
-                                href={`#app/alex/${row.username}/edit`}
+                                href={`#app/alex/${row.username}/change-expiry-date`}
                                 color="#fff"
                               >
-                                <CreateIcon />
+                                <CalendarIcon />
                               </Link>
                             </IconButton>
 
-                            <IconButton
+                            {/* <IconButton
                               onClick={() => openModal(row.username)}
                               color={"primary"}
                             >
                               <DeleteIcon />
-                            </IconButton>
+                            </IconButton> */}
                           </Box>
                         </TableCell>
 
@@ -395,7 +397,7 @@ const UserList = () => {
                           (item, inx) =>
                             inx > 1 && (
                               <TableCell align="left" key={item.id}>
-                                {["expireDate", "lastChangeDate"].includes(
+                                {["expiryDate", "lastChangeDate"].includes(
                                   item.id
                                 ) ? (
                                   moment(row[item.id]).format("DD.MM.YYYY")

@@ -31,7 +31,7 @@ const EditService = () => {
   function sendNotification(errorMessage) {
     const componentProps = {
       type: "feedback",
-      message: errorMessage != null ? errorMessage : "Сервис отредактирован!",
+      message: errorMessage != null ? errorMessage : "Дата изменена!",
       variant: "contained",
       color: errorMessage != null ? "warning" : "success",
     };

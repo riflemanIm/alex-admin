@@ -55,7 +55,7 @@ function alexReducer(state = initialData, { type, payload }) {
     return {
       ...state,
       saveLoading: true,
-      currentAlex: { alex_id: null },
+      currentAlex: { username: null },
     };
   }
 
@@ -72,7 +72,7 @@ function alexReducer(state = initialData, { type, payload }) {
       ...state,
       saveLoading: false,
       errorMessage: payload,
-      currentAlex: { alex_id: null },
+      currentAlex: { username: null },
     };
   }
 
@@ -172,7 +172,7 @@ function AlexProvider({ children }) {
   const [state, dispatch] = React.useReducer(alexReducer, {
     findLoading: false,
     saveLoading: false,
-    currentAlex: { alex_id: null },
+    currentAlex: { username: null },
     rows: [],
     loading: false,
     idToDelete: null,
@@ -219,14 +219,12 @@ const actions = {
       dispatch({
         type: "ALEXS_FORM_FIND_STARTED",
       });
+      const response = await list();
+      console.log(response.find((item) => item.username === id));
 
-      axios.get(`/alex/${id}`).then((res) => {
-        const currentAlex = res.data;
-
-        dispatch({
-          type: "ALEXS_FORM_FIND_SUCCESS",
-          payload: currentAlex,
-        });
+      dispatch({
+        type: "ALEXS_FORM_FIND_SUCCESS",
+        payload: response.find((item) => item.username === id),
       });
     } catch (error) {
       console.log(error);
@@ -248,7 +246,7 @@ const actions = {
 
           dispatch({
             type: "ALEXS_FORM_CREATE_SUCCESS",
-            payload: { alex_id: res.data },
+            payload: { username: res.data },
           });
           notify();
           history.push(urlBack);
@@ -276,25 +274,27 @@ const actions = {
     dispatch({
       type: "ALEXS_FORM_UPDATE_STARTED",
     });
-
+    console.log("!!!!!!!!!!", values);
     await axios
-      .put(`/alex/${id}`, { id, data: values })
+      .put(`/alex/${id}`, { id, ...values })
       .then((response) => {
-        dispatch({
-          type: "ALEXS_FORM_UPDATE_SUCCESS",
-          payload: values,
-        });
-        notify();
-        console.log("response", response);
-        history.push("/app/alex/list");
+        if (response.data.res === "ok") {
+          dispatch({
+            type: "ALEXS_FORM_UPDATE_SUCCESS",
+            payload: values,
+          });
+          notify();
+          console.log("response", response);
+          history.push("/app/alex/list");
+        }
       })
       .catch((error) => {
         console.log("error", error);
-        notify(error.response.data?.err);
+        notify(error.response?.err);
 
         dispatch({
           type: "ALEXS_FORM_UPDATE_ERROR",
-          payload: error.response.data?.err,
+          payload: error.response?.err,
         });
       });
   },
