@@ -2,7 +2,7 @@ const hostApi =
   process.env.NODE_ENV === "development"
     ? "http://localhost"
     : "http://10.1.0.182";
-const portApi = process.env.NODE_ENV === "development" ? 8000 : 8080;
+const portApi = process.env.NODE_ENV === "development" ? 8000 : 8888;
 const baseURLApi = `${hostApi}${portApi ? `:${portApi}` : ``}/api`;
 const baseURLimages = `${hostApi}${portApi ? `:${portApi}` : ``}/images`;
 console.log("portApi", portApi);
