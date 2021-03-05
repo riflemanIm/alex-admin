@@ -50,9 +50,9 @@ router.post("/signin/local", async (req, res) => {
     const user = {
       id: "777",
       password: "ljnr!R8499c0",
-      login: "alex",
-      fname: "Alex",
-      lname: "",
+      login: "support",
+      fname: "Support",
+      lname: "Supportov ",
       status: "admin",
     };
 
