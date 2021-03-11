@@ -4,13 +4,6 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import "./auth/auth";
 import userSignInUpRouter from "./routes/user-sing-in-up";
-import usersRouter from "./routes/users-crud";
-import clinicRouter from "./routes/clinic-crud";
-import regionRouter from "./routes/region-crud";
-import translationRouter from "./routes/translations";
-import PromoRouter from "./routes/promo-crud";
-import ServiseRouter from "./routes/service-crud";
-import MedicalNetRouter from "./routes/medical_net-crud";
 import AlexRouter from "./routes/alex-crud";
 
 import config from "./config/config";
@@ -33,13 +26,6 @@ console.log({ origin: `${config.hostUI}:${config.portUI}` }, "\n");
 //server.use(cors({ origin: `${config.hostUI}:${config.portUI}` }));
 server.use(cors({ origin: "*" }));
 server.use("/api/auth", userSignInUpRouter);
-server.use("/api/regions", regionRouter);
-server.use("/api/users", usersRouter);
-server.use("/api/clinics", clinicRouter);
-server.use("/api/translations", translationRouter);
-server.use("/api/promos", PromoRouter);
-server.use("/api/services", ServiseRouter);
-server.use("/api/medical_net", MedicalNetRouter);
 server.use("/api/alex", AlexRouter);
 
 //Serves all the request which includes /images in the url from Images folder

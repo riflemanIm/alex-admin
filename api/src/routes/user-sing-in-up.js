@@ -1,7 +1,7 @@
 import express from "express";
 //import bcrypt from "bcrypt";
 //import passport from "passport";
-import { findByEmail } from "../models/account-model";
+//import { findByEmail } from "../models/account-model";
 //import config from "../config/config";
 import { jwtSign, md5Compare } from "../helpers/helpers";
 
