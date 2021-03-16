@@ -98,11 +98,11 @@ function Layout(props) {
           <div>
             <Link
               color={"primary"}
-              href={"https://mobimed.ru/"}
+              href={"/"}
               target={"_blank"}
               className={classes.link}
             >
-              Alex Admin
+              Support
             </Link>
             {/* <Link
               color={"primary"}

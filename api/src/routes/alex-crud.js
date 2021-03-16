@@ -6,8 +6,11 @@ import express from "express";
 const router = express.Router();
 const util = require("util");
 const exec = util.promisify(require("child_process").exec);
+const NodeCache = require("node-cache");
+const myCache = new NodeCache();
+const timeExp = 3600 * 24; // период в секундах (3600 * 24 -  сутки)
 
-// GET ALL Alex USERs
+// GET ALL Support USERs
 router.get("/", async (req, res) => {
   try {
     //    const filter = req.params.filter;
@@ -28,9 +31,12 @@ router.get("/", async (req, res) => {
         const homedir = user[5];
 
         if (username !== "" && homedir !== "") {
-          const resExecDir = await exec(
-            `sudo du -c ${homedir} -h --max-depth=1`
-          );
+          let resExecDir = myCache.get(`dirData${username}`);
+
+          if (resExecDir == undefined) {
+            resExecDir = await exec(`sudo du -c ${homedir} -h --max-depth=1`);
+            myCache.set(`dirData${username}`, resExecDir, timeExp);
+          }
           //          const resExecDir = { stdout: "empty", stderr: "" };
 
           const resExecPass = await exec(`sudo chage -l ${username}`);

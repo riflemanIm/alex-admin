@@ -166,7 +166,7 @@ export default function Header(props) {
           )}
         </IconButton>
         <Typography variant="h6" weight="medium" className={classes.logotype}>
-          Alex
+          Support
         </Typography>
         <div className={classes.grow} />
         <div
@@ -348,7 +348,7 @@ export default function Header(props) {
               color="primary"
               href="https://mobimed.ru"
             >
-              Alex.com
+              Support.com
             </Typography>
           </div>
           <MenuItem

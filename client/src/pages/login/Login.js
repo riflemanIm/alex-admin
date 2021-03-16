@@ -414,7 +414,7 @@ function Login(props) {
           )}
         </div>
         <Typography color="primary" className={classes.copyright}>
-          © 2021 Alex, LLC. All rights reserved.
+          © 2021 Support, LLC. All rights reserved.
         </Typography>
       </div>
     </Grid>

@@ -4,7 +4,7 @@ import { PersonOutline as PersonOutlineIcon } from "@material-ui/icons";
 const structure = [
   {
     id: "0",
-    label: "Пользователи Alex",
+    label: "Пользователи",
     role: ["admin"],
     badge: "New",
     badgeColor: "success",
