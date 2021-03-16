@@ -23,8 +23,8 @@ server.use(express.json());
 
 // Routers
 console.log({ origin: `${config.hostUI}:${config.portUI}` }, "\n");
-//server.use(cors({ origin: `${config.hostUI}:${config.portUI}` }));
-server.use(cors({ origin: "*" }));
+server.use(cors({ origin: `${config.hostUI}:${config.portUI}` }));
+//server.use(cors({ origin: "*" }));
 server.use("/api/auth", userSignInUpRouter);
 server.use("/api/alex", AlexRouter);
 
