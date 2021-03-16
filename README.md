@@ -5,9 +5,9 @@ Wed admin for working local users (on linux)
 ### create  `touch .env` 
 ### add vars
 
-HOST_UI=http://10.1.0.182
-PORT_API=8888
-PORT_UI=5000
+#### HOST_UI=http://10.1.0.182
+#### PORT_API=8888
+#### PORT_UI=5000
 
 ## Start API 
 ### `yarn ` 
