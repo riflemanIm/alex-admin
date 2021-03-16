@@ -9,7 +9,7 @@ const config = {
   admin_email: "oleg@la.com",
   secret_key: "HUEyqESqgQ1yTwzVlO6wprC9Kf1J1xuA",
   //remote: "https://site-node-backend.herokuapp.com",
-  port: process.env.REACT_APP_PORT_API,
+  port: process.env.PORT_API,
   hostUI: process.env.HOST_UI,
   portUI: process.env.PORT_UI,
   google: {
