@@ -8,7 +8,7 @@ Wed admin for working local users (on linux)
 ### add vars:
 
 #### HOST_UI=http://10.1.0.182
-#### PORT_API=8888 (production)
+#### PORT_API=8888
 #### PORT_UI=5000
 ## Start API server
 ### `yarn ` 
@@ -23,7 +23,7 @@ Wed admin for working local users (on linux)
 ### add vars:
 
 #### REACT_APP_HOST_API=http://10.1.0.182
-#### REACT_APP_PORT_API=8888 (production)
+#### REACT_APP_PORT_API=8888
 ##  Client dependencies and build
 ### `yarn ` 
 ### `yarn build`
