@@ -1,5 +1,5 @@
 #  Alex-admin
-Wed admin for working local users (on linux)
+Web admin for working local users (on linux)
 
 ## API settings and start
 ###  `cd api` 
