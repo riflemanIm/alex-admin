@@ -10,7 +10,7 @@ Wed admin for working local users (on linux)
 #### HOST_UI=http://10.1.0.182
 #### PORT_API=8888
 #### PORT_UI=5000
-## Start API server
+## Dependencies, build and start API server
 ### `yarn ` 
 ### `yarn build`
 ### `yarn server`
