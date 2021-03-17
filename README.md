@@ -15,6 +15,15 @@ Wed admin for working local users (on linux)
 
 ### `yarn server`
 
+## Client settings 
+### create  `touch .env` 
+### add vars:
+
+#### REACT_APP_HOST_API=http://10.1.0.182
+#### REACT_APP_PORT_API=8888 (production)
+## Start client
+### `yarn ` 
+### `yarn build`
 
 ## Static server 
 The build folder is ready to be deployed.
@@ -27,13 +36,3 @@ Find out more about deployment here:
 
 ####  bit.ly/CRA-deploy
 
-## Client settings 
-### create  `touch .env` 
-### add vars:
-
-#### REACT_APP_HOST_API=http://10.1.0.182
-#### REACT_APP_PORT_API=8888 (production)
-
-## Start client
-### `yarn ` 
-### `yarn build`
