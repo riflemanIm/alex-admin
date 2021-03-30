@@ -9,12 +9,13 @@ const exec = util.promisify(require("child_process").exec);
 const NodeCache = require("node-cache");
 const myCache = new NodeCache();
 const timeExp = 3600 * 24; // период в секундах (3600 * 24 -  сутки)
+import config from "../config/config";
 
 // GET ALL Support USERs
 router.get("/", async (req, res) => {
   try {
     //    const filter = req.params.filter;
-    const filter = "/home";
+    const filter = config.pathFilter;
     const commmand =
       filter !== ""
         ? `sudo cat /etc/passwd | grep ${filter}`

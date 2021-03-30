@@ -28,5 +28,5 @@ console.log("process.env.NODE_ENV", process.env.NODE_ENV);
 // config.host =
 //   process.env.NODE_ENV === "production" ? config.remote : "http://localhost";
 config.apiUrl = `${config.host}${config.port ? `:${config.port}` : ``}`;
-
+config.pathFilter = process.env.PATH_FILTER;
 module.exports = config;
