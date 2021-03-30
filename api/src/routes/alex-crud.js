@@ -20,6 +20,8 @@ router.get("/", async (req, res) => {
       filter !== ""
         ? `sudo cat /etc/passwd | grep ${filter}`
         : "sudo cat /etc/passwd";
+    console.log("\n commmand: \n ", commmand, "\n\n ");
+
     const { stdout, stderr } = await exec(commmand);
 
     if (stdout !== "") {
