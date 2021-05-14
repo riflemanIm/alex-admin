@@ -11,7 +11,7 @@ import {
   TextField as Input,
 } from "@material-ui/core";
 import Widget from "../../components/Widget/Widget";
-//import { Button } from "../../components/Wrappers/Wrappers";
+import { Button } from "../../components/Wrappers/Wrappers";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -37,7 +37,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import useStyles from "./styles";
 // Icons
 import {
-  //  Add as AddIcon,
+  Add as AddIcon,
   Search as SearchIcon,
   CalendarTodayOutlined as CalendarIcon,
 } from "@material-ui/icons";
@@ -302,7 +302,7 @@ const UserList = () => {
       <Grid item xs={12}>
         <Widget inheritHeight>
           <Grid container spacing={2}>
-            {/* <Grid item md={6} xs={12}>
+            <Grid item md={6} xs={12}>
               <Link href="#/app/alex/add" underline="none" color="#fff">
                 <Button variant={"contained"} color={"success"}>
                   <Box mr={1} display={"flex"}>
@@ -311,7 +311,7 @@ const UserList = () => {
                   Добавить
                 </Button>
               </Link>
-            </Grid> */}
+            </Grid>
             <Grid item md={6} xs={12}>
               <Input
                 id="search-field"

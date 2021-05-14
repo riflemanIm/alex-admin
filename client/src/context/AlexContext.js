@@ -276,7 +276,7 @@ const actions = {
     });
     console.log("!!!!!!!!!!", values);
     await axios
-      .put(`/alex/${id}`, { id, ...values })
+      .put(`/alex/change-expiry-date/${id}`, { id, ...values })
       .then((response) => {
         if (response.data.res === "ok") {
           dispatch({
@@ -299,29 +299,31 @@ const actions = {
       });
   },
 
-  doFetch: (filter, keepPagination = false) => async (dispatch) => {
-    try {
-      dispatch({
-        type: "ALEXS_LIST_FETCH_STARTED",
-        payload: { filter, keepPagination },
-      });
+  doFetch:
+    (filter, keepPagination = false) =>
+    async (dispatch) => {
+      try {
+        dispatch({
+          type: "ALEXS_LIST_FETCH_STARTED",
+          payload: { filter, keepPagination },
+        });
 
-      const response = await list();
+        const response = await list();
 
-      dispatch({
-        type: "ALEXS_LIST_FETCH_SUCCESS",
-        payload: {
-          rows: response,
-          count: response.length,
-        },
-      });
-    } catch (error) {
-      console.log(error);
-      dispatch({
-        type: "ALEXS_LIST_FETCH_ERROR",
-      });
-    }
-  },
+        dispatch({
+          type: "ALEXS_LIST_FETCH_SUCCESS",
+          payload: {
+            rows: response,
+            count: response.length,
+          },
+        });
+      } catch (error) {
+        console.log(error);
+        dispatch({
+          type: "ALEXS_LIST_FETCH_ERROR",
+        });
+      }
+    },
 
   doDelete: (id) => async (dispatch) => {
     if (!config.isBackend) {

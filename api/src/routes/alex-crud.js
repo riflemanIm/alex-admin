@@ -116,22 +116,23 @@ router.get("/", async (req, res) => {
 //   }
 // });
 
-// INSERT  INTO DB
-// router.post("/", async (req, res) => {
-//   const newService = req.body.data;
+// CREATE USER
+router.post("/", async (req, res) => {
+  const newUser = req.body.data;
 
-//   try {
-//     await db.addRow(newService);
-//     res.status(201).json("ok");
-//   } catch (err) {
-//     console.log("err", err);
-//     res
-//       .status(500)
-//       .json({ err: "Error in adding service", message: err.message });
-//   }
-// });
+  try {
+    if (newUser != null && newUser !== "") {
+      const resNewUser = await exec(`sudo useradd ${newUser}`);
+      console.log("resNewUser", resNewUser);
+      res.status(201).json("ok");
+    }
+  } catch (err) {
+    console.log("err", err);
+    res.status(500).json({ err: "Error in adding user", message: err.message });
+  }
+});
 
-router.put("/:id", async (req, res) => {
+router.put("/change-expiry-date/:id", async (req, res) => {
   const username = req.params.id;
   const expiryDate = req.body.expiryDate;
 

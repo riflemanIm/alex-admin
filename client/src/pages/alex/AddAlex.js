@@ -17,29 +17,18 @@ import Widget from "../../components/Widget/Widget";
 import { actions } from "../../context/AlexContext";
 import { useAlexDispatch } from "../../context/AlexContext";
 import useForm from "../../hooks/useForm";
-import validate from "./validation";
+import validate from "./validation_add";
 
 const AddAlex = () => {
   const classes = useStyles();
   const { returnToClinic } = useParams();
   console.log("returnToClinic", returnToClinic);
 
-  const urlBackClinic = !isNaN(returnToClinic)
-    ? `/app/clinic/${returnToClinic}/change-expiry-date`
-    : returnToClinic != null
-    ? "/app/clinic/add"
-    : "/app/alex/list";
-
-  console.log(
-    "urlBackClinic",
-    returnToClinic,
-    !isNaN(returnToClinic),
-    urlBackClinic
-  );
+  const urlBack = "/app/alex/list";
   function sendNotification(errorMessage = null) {
     const componentProps = {
       type: "feedback",
-      message: errorMessage != null ? errorMessage : "Сервис добавлен!",
+      message: errorMessage != null ? errorMessage : "Пльзователь добавлен!",
       variant: "contained",
       color: errorMessage != null ? "warning" : "success",
     };
@@ -66,7 +55,7 @@ const AddAlex = () => {
     actions.doCreate(
       values,
       sendNotification,
-      urlBackClinic
+      urlBack
     )(managementDispatch, history);
   };
 
@@ -83,65 +72,17 @@ const AddAlex = () => {
             <Box display={"flex"} flexDirection={"column"} width={600}>
               <TextField
                 variant="outlined"
-                value={values?.label || ""}
-                name="label"
+                value={values?.username || ""}
+                name="username"
                 onChange={handleChange}
                 style={{ marginBottom: 35 }}
-                placeholder="Название(Label)"
-                label="Название(Label)"
+                placeholder="Имя пользователя"
+                label="Имя пользователя"
                 type="text"
                 fullWidth
                 required
-                error={errors?.label != null}
-                helperText={errors?.label != null && errors?.label}
-              />
-              <TextField
-                variant="outlined"
-                value={values?.address || ""}
-                name="address"
-                onChange={handleChange}
-                style={{ marginBottom: 35 }}
-                placeholder="Адрес"
-                label="Адрес"
-                type="text"
-                fullWidth
-                required
-                error={errors?.address != null}
-                helperText={errors?.address != null && errors?.address}
-              />
-              <TextField
-                variant="outlined"
-                value={values?.file_server_address || ""}
-                name="file_server_address"
-                onChange={handleChange}
-                style={{ marginBottom: 35 }}
-                placeholder="Адрес сервера"
-                label="Адрес сервера"
-                type="text"
-                fullWidth
-                required
-                error={errors?.file_server_address != null}
-                helperText={
-                  errors?.file_server_address != null &&
-                  errors?.file_server_address
-                }
-              />
-              <TextField
-                variant="outlined"
-                value={values?.file_server_binding_name || ""}
-                name="file_server_binding_name"
-                onChange={handleChange}
-                style={{ marginBottom: 35 }}
-                placeholder="Имя сборки"
-                label="Имя сборки"
-                type="text"
-                fullWidth
-                required
-                error={errors?.file_server_binding_name != null}
-                helperText={
-                  errors?.file_server_binding_name != null &&
-                  errors?.file_server_binding_name
-                }
+                error={errors?.username != null}
+                helperText={errors?.username != null && errors?.username}
               />
             </Box>
             <Grid item justify={"center"} container>
@@ -154,13 +95,14 @@ const AddAlex = () => {
                   <Button
                     variant={"outlined"}
                     color={"primary"}
-                    onClick={() => history.push(urlBackClinic)}
+                    onClick={() => history.push(urlBack)}
                   >
                     Отмена
                   </Button>
                   <Button
                     variant={"contained"}
                     color={"success"}
+                    disabled={values.username == null || values.username === ""}
                     onClick={handleSubmit}
                   >
                     Сохранить
