@@ -1,6 +1,5 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { useParams } from "react-router";
 
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
@@ -21,8 +20,6 @@ import validate from "./validation_add";
 
 const AddAlex = () => {
   const classes = useStyles();
-  const { returnToClinic } = useParams();
-  console.log("returnToClinic", returnToClinic);
 
   const urlBack = "/app/alex/list";
   function sendNotification(errorMessage = null) {

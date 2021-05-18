@@ -83,6 +83,11 @@ function Layout(props) {
               <AlexChangeDate />
             </AlexProvider>
           </Route>
+          <Route path="/app/alex/:id/change-password">
+            <AlexProvider>
+              <AlexChangePassword />
+            </AlexProvider>
+          </Route>
         </Switch>
         <Fab
           color="primary"

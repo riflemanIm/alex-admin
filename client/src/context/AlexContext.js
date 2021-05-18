@@ -244,11 +244,15 @@ const actions = {
         .then((res) => {
           console.log("------- doCreate -----------", res.data);
 
+          if (res.data === "ok") {
+            notify();
+          } else {
+            notify(res.data);
+          }
           dispatch({
             type: "ALEXS_FORM_CREATE_SUCCESS",
-            payload: { username: res.data },
+            payload: values,
           });
-          notify();
           history.push(urlBack);
         })
         .catch((error) => {
@@ -277,6 +281,35 @@ const actions = {
     console.log("!!!!!!!!!!", values);
     await axios
       .put(`/alex/change-expiry-date/${id}`, { id, ...values })
+      .then((response) => {
+        if (response.data.res === "ok") {
+          dispatch({
+            type: "ALEXS_FORM_UPDATE_SUCCESS",
+            payload: values,
+          });
+          notify();
+          console.log("response", response);
+          history.push("/app/alex/list");
+        }
+      })
+      .catch((error) => {
+        console.log("error", error);
+        notify(error.response?.err);
+
+        dispatch({
+          type: "ALEXS_FORM_UPDATE_ERROR",
+          payload: error.response?.err,
+        });
+      });
+  },
+
+  doСhangePassword: (id, values, notify) => async (dispatch, history) => {
+    dispatch({
+      type: "ALEXS_FORM_UPDATE_STARTED",
+    });
+    console.log("!!!!!!!!!!", values);
+    await axios
+      .put(`/alex/change-password/${id}`, { id, ...values })
       .then((response) => {
         if (response.data.res === "ok") {
           dispatch({

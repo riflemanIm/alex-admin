@@ -40,6 +40,7 @@ import {
   Add as AddIcon,
   Search as SearchIcon,
   CalendarTodayOutlined as CalendarIcon,
+  LockOpen as LockOpenIcon,
 } from "@material-ui/icons";
 
 import { actions } from "../../context/AlexContext";
@@ -78,13 +79,26 @@ const headCells = [
     disablePadding: false,
     label: "username",
   },
-  { id: "actions", alignRight: false, disablePadding: false, label: "Дествия" },
+  // {
+  //   id: "homedir",
+  //   alignRight: false,
+  //   disablePadding: false,
+  //   label: "homedir",
+  // },
   {
-    id: "homedir",
+    id: "expiryDate",
     alignRight: false,
     disablePadding: false,
-    label: "homedir",
+    label: "expiryDate",
   },
+
+  {
+    id: "actions",
+    alignRight: false,
+    disablePadding: false,
+    label: "Действия",
+  },
+
   {
     id: "folders",
     alignRight: false,
@@ -96,12 +110,6 @@ const headCells = [
     alignRight: false,
     disablePadding: false,
     label: "lastChangeDate",
-  },
-  {
-    id: "expiryDate",
-    alignRight: false,
-    disablePadding: false,
-    label: "expiryDate",
   },
 ];
 
@@ -365,6 +373,11 @@ const UserList = () => {
                             {row.username}
                           </Typography>
                         </TableCell>
+                        <TableCell component="th">
+                          <Typography variant={"body2"}>
+                            {moment(row.expiryDate).format("DD.MM.YYYY")}
+                          </Typography>
+                        </TableCell>
                         <TableCell align="left">
                           <Box
                             display={"flex"}
@@ -374,7 +387,7 @@ const UserList = () => {
                           >
                             <IconButton
                               color={"primary"}
-                              title="change-expiry-date"
+                              title="Изменить дату expiry"
                             >
                               <Link
                                 href={`#app/alex/${row.username}/change-expiry-date`}
@@ -384,18 +397,23 @@ const UserList = () => {
                               </Link>
                             </IconButton>
 
-                            {/* <IconButton
-                              onClick={() => openModal(row.username)}
+                            <IconButton
+                              title="Изменить пароль"
                               color={"primary"}
                             >
-                              <DeleteIcon />
-                            </IconButton> */}
+                              <Link
+                                href={`#app/alex/${row.username}/change-password`}
+                                color="#fff"
+                              >
+                                <LockOpenIcon />
+                              </Link>
+                            </IconButton>
                           </Box>
                         </TableCell>
 
                         {headCells.map(
                           (item, inx) =>
-                            inx > 1 && (
+                            inx > 2 && (
                               <TableCell align="left" key={item.id}>
                                 {["expiryDate", "lastChangeDate"].includes(
                                   item.id

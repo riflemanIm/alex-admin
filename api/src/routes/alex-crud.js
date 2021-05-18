@@ -118,20 +118,23 @@ router.get("/", async (req, res) => {
 
 // CREATE USER
 router.post("/", async (req, res) => {
-  const newUser = req.body.data;
+  const { username } = req.body.data;
 
   try {
-    if (newUser != null && newUser !== "") {
-      const resNewUser = await exec(`sudo useradd ${newUser}`);
-      console.log("resNewUser", resNewUser);
-      res.status(201).json("ok");
+    if (username != null && username !== "") {
+      //console.log("username", username);
+      const resNewUser = await exec(`sudo ${config.commandAdd} ${username}`);
+
+      if (resNewUser.stdout === "") res.status(201).json("ok");
+      else res.status(201).json(resNewUser.stdout);
     }
   } catch (err) {
-    console.log("err", err);
-    res.status(500).json({ err: "Error in adding user", message: err.message });
+    //console.log("err", err.stderr);
+    res.status(500).json({ err: `Error: ${err.stderr}` });
   }
 });
 
+// CHANGE EXPIRY DATE
 router.put("/change-expiry-date/:id", async (req, res) => {
   const username = req.params.id;
   const expiryDate = req.body.expiryDate;
@@ -157,6 +160,40 @@ router.put("/change-expiry-date/:id", async (req, res) => {
       }
     } else {
       res.status(500).json({ err: "Error iusername or expiryDate" });
+    }
+  } catch (err) {
+    res
+      .status(500)
+      .json({ err: "Error in updating service", message: err.message });
+  }
+});
+
+// CHANGE PASSWORD
+router.put("/change-password/:id", async (req, res) => {
+  const username = req.params.id;
+  const password = req.body.password;
+
+  try {
+    if (password !== "" && username !== "") {
+      const command = `sudo chage -E ${password} ${username}`;
+      console.log("\n ----------- command ------------ \n", command);
+
+      const resChage = await exec(command);
+      console.log("\n ----------- resChage ----------- \n", resChage);
+
+      //if (resChage.stdout !== "") {
+      res.status(200).json({ res: "ok" });
+      //}
+      if (resChage.stderr !== "") {
+        console.log(
+          "\n -----------resChage.stderr ------------ \n",
+          resChage.stderr
+        );
+
+        res.status(500).json({ err: resChage.stderr });
+      }
+    } else {
+      res.status(500).json({ err: "Error iusername or password" });
     }
   } catch (err) {
     res
