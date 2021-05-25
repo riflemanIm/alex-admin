@@ -153,7 +153,7 @@ const UserList = () => {
   const alexRowsPerPage = localStorage.getItem("alexRowsPerPage");
 
   const [rowsPerPage, setRowsPerPage] = React.useState(
-    alexRowsPerPage != null ? parseInt(alexRowsPerPage, 10) : 5
+    alexRowsPerPage != null ? parseInt(alexRowsPerPage, 10) : 50
   );
   const [alexsRows, setAlexsRows] = React.useState([]);
 
@@ -454,7 +454,7 @@ const UserList = () => {
             </Table>
           </TableContainer>
           <TablePagination
-            rowsPerPageOptions={[5, 10, 25]}
+            rowsPerPageOptions={[5, 10, 25, 100, 500]}
             component="div"
             count={alexsRows.length}
             rowsPerPage={rowsPerPage}
