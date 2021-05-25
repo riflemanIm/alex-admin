@@ -7,10 +7,11 @@ Web admin for working local users (on linux)
 ### create  `touch .env` 
 ### add vars:
 
-#### HOST_UI=http://10.1.0.182
-#### PORT_API=8888
-#### PORT_UI=5000
-#### PATH_FILTER=/home
+#### HOST_UI=http://10.1.0.182 
+#### PORT_API=8888 // api port
+#### PORT_UI=5000 // client ui port
+#### PATH_FILTER=/home //  start dir path  
+#### COMMAND_ADD=useradd // add system user 
 ## Dependencies, build and start API server
 ### `yarn ` 
 ### `yarn build`
