@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import { useParams } from "react-router";
 
@@ -86,21 +86,14 @@ const AlexChangeDate = () => {
                     name="password"
                     onChange={handleChange}
                     style={{ marginBottom: 35 }}
-                    placeholder="Имя пользователя"
-                    label="Имя пользователя"
+                    placeholder="Пароль"
+                    label="Пароль"
                     type="text"
                     fullWidth
                     required
                     error={errors?.password != null}
                     helperText={errors?.password != null && errors?.password}
                   />
-                  <pre>
-                    Пояснение: - строка должна содержать хотя бы одно число; -
-                    строка должна содержать хотя бы одну латинскую букву в
-                    нижнем регистре; - строка должна содержать хотя бы одну
-                    латинскую букву в верхнем регистре; - строка должна состоять
-                    не менее, чем из 7 вышеупомянутых символов.
-                  </pre>
                 </>
               )}
             </Box>

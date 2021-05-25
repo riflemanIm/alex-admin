@@ -13,6 +13,7 @@ import Sidebar from "../Sidebar";
 import Footer from "../Footer";
 import { Link } from "../../components/Wrappers";
 import ColorChangeThemePopper from "./components/ColorChangeThemePopper";
+import BreadCrumbs from "../../components/BreadCrumbs";
 
 // pages
 import Notifications from "../../pages/notifications";
@@ -20,8 +21,7 @@ import Notifications from "../../pages/notifications";
 import AlexList from "../../pages/alex";
 import AlexAdd from "../../pages/alex/AddAlex";
 import AlexChangeDate from "../../pages/alex/AlexChangeDate";
-
-import BreadCrumbs from "../../components/BreadCrumbs";
+import AlexChangePassword from "../../pages/alex/AlexChangePassword";
 
 // context
 import { useLayoutState } from "../../context/LayoutContext";

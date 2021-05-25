@@ -174,26 +174,23 @@ router.put("/change-password/:id", async (req, res) => {
   const password = req.body.password;
 
   try {
-    if (password !== "" && username !== "") {
-      const command = `sudo chage -E ${password} ${username}`;
+    if (password !== "") {
+      const command = `echo "${password}" | sudo passwd ${username} --stdin`;
       console.log("\n ----------- command ------------ \n", command);
 
-      const resChage = await exec(command);
-      console.log("\n ----------- resChage ----------- \n", resChage);
-
-      //if (resChage.stdout !== "") {
-      res.status(200).json({ res: "ok" });
-      //}
-      if (resChage.stderr !== "") {
+      const resChagePass = await exec(command);
+      console.log("\n ----------- resChagePass ----------- \n", resChagePass);
+      if (resChagePass.stdout !== "" && resChagePass.stderr === "") {
+        res.status(200).json({ res: "ok" });
+      } else if (resChagePass.stderr !== "") {
         console.log(
-          "\n -----------resChage.stderr ------------ \n",
+          "\n -----------resChagePass.stderr ------------ \n",
           resChage.stderr
         );
-
         res.status(500).json({ err: resChage.stderr });
       }
     } else {
-      res.status(500).json({ err: "Error iusername or password" });
+      res.status(500).json({ err: "Error change username or password" });
     }
   } catch (err) {
     res

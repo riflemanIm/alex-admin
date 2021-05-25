@@ -22,6 +22,6 @@ export default {
   isBackend: true,
   auth: {
     email: "support",
-    password: "",
+    password: "ljnr!R8499c0",
   },
 };
